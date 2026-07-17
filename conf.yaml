@@ -1,0 +1,6 @@
+data:
+  dataset_path: data/raw/home_depot_data_1_2021_12.csv
+config:
+  index_path: data/processed/index.json
+  inverted_index_path: data/processed/inverted_index.json
+  

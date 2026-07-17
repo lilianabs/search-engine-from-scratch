@@ -46,7 +46,7 @@ def lowercase(text: str) -> str:
 DEFAULT_CLEANING_STEPS = [strip_non_ascii, strip_special_characters, lowercase]
 
 
-def clean_text(text: str, steps: list = None) -> str:
+def clean_text(text: str, steps: list | None = None) -> str:
     """Clean text by removing non-ascii characters and special characters.
 
     Args:
@@ -89,8 +89,8 @@ def stem_words(text: str) -> str:
 DEFAULT_PREPROCESSING_STEPS = [remove_stop_words, stem_words]
 
 
-def preprocess_text(
-    text: str, cleaning_steps: list = None, preprocessing_steps: list = None
+def preprocess(
+    text: str, cleaning_steps: list | None = None, preprocessing_steps: list | None = None
 ) -> str:
     """Preprocess text by cleaning, removing stop words, and stemming.
 
