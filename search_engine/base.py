@@ -43,3 +43,21 @@ class BaseSearchEngine(ABC):
             List of SearchResult objects sorted by relevance score (descending).
         """
         pass
+
+    def save(self, path: str) -> None:
+        """Save the index to disk.
+
+        Args:
+            path: File path to save the index to.
+        """
+        from search_engine import storage
+        storage.save_index(self, path)
+
+    def load(self, path: str) -> None:
+        """Load a previously saved index from disk.
+
+        Args:
+            path: File path to load the index from.
+        """
+        from search_engine import storage
+        storage.load_index(self, path)

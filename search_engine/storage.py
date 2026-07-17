@@ -12,7 +12,12 @@ def save_index(engine: BaseSearchEngine, path: str) -> None:
         engine: The search engine instance to save.
         path: File path to save the index to.
     """
-    pass
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with open(path, 'wb') as f:
+        pickle.dump({
+            'documents': engine.documents,
+            'inverted_index': engine.inverted_index
+        }, f)
 
 
 def load_index(engine: BaseSearchEngine, path: str) -> None:
@@ -22,4 +27,7 @@ def load_index(engine: BaseSearchEngine, path: str) -> None:
         engine: The search engine instance to load into.
         path: File path to load the index from.
     """
-    pass
+    with open(path, 'rb') as f:
+        data = pickle.load(f)
+        engine.documents = data['documents']
+        engine.inverted_index = data['inverted_index']
