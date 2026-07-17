@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "search-engine-from-scratch"
 version = "0.1.0"
@@ -6,6 +10,12 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "nltk>=3.10.0",
+    "pandas>=3.0.3",
     "pytest>=9.1.1",
+    "pyyaml>=6.0.3",
     "ruff>=0.15.21",
 ]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["search_engine*"]
