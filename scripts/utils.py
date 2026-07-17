@@ -4,21 +4,21 @@ import pandas as pd
 import yaml
 
 
-def read_documents(file_path: str) -> dict[str, str]:
+def read_documents(file_path: str, columns: list[str]) -> dict[str, str]:
     """Read documents from a csv file
 
     Args:
         file_path: Path to the file containing documents.
+        columns: List of column names to include in the document content.
 
     Returns:
-        Dictionary mapping document ID to document content (title + description).
+        Dictionary mapping document ID to document content.
     """
     documents = pd.read_csv(file_path)
     doc_dict = {}
     for _, row in documents.iterrows():
         doc_id = str(row["index"])
-        # Combine title and description as the document content
-        content = f"{row['title']} {row['description']} {row['price']} {row['availability']}"
+        content = " ".join(str(row[col]) for col in columns)
         doc_dict[doc_id] = content
     return doc_dict
 
@@ -35,13 +35,16 @@ def load_config(config_path: str) -> dict:
     with open(config_path, "r") as f:
         return yaml.safe_load(f)
     
-def get_price_availability(id: str, documents: dict[str, str]) -> Tuple[str, str]:
-    """Extract price and availability information from documents.
+def get_price_availability(id: str, csv_path: str) -> Tuple[str, str]:
+    """Extract price and availability information from a CSV file.
 
     Args:
-        documents: Dictionary mapping document ID to document content.
+        id: Document ID to look up.
+        csv_path: Path to the CSV file containing price and availability data.
+
+    Returns:
+        Tuple of (price, availability) for the given document ID.
     """
-    price = documents[id].split()[-2]  # Assuming price is the second last word
-    availability = documents[id].split()[-1]  # Assuming availability is the last word
-    
-    return price, availability
+    df = pd.read_csv(csv_path)
+    row = df[df["index"] == int(id)].iloc[0]
+    return str(row["price"]), str(row["availability"])

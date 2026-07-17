@@ -8,7 +8,8 @@ def main():
     config_path = get_config_path(config_file_name)
     config_dict = load_config(config_path)
     
-    documents = read_documents(config_dict["data"]["dataset_path"])
+    columns = ["title"]
+    documents = read_documents(config_dict["data"]["dataset_path"], columns)
 
     keyword_search_engine = KeywordSearchEngine()
     # Use add_documents which sets self.documents and calls create_inverted_index
@@ -20,7 +21,7 @@ def main():
     keyword_results = keyword_search_engine.search(query, top_k=10)
     print(f"Keyword Search Results for query '{query}':")
     for result in keyword_results:
-        price, availability = get_price_availability(result.doc_id, documents)
+        price, availability = get_price_availability(result.doc_id, config_dict["data"]["dataset_path"])
         print(f"Doc ID: {result.doc_id}, \nScore: {result.score}, \nContent: {result.content}")
         print(f"Price: {price}, \nAvailability: {availability}")
         print("-" * 80)
