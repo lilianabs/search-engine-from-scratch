@@ -3,4 +3,6 @@ data:
 index:
   keyword_inverted_index_path: data/processed/keyword_inverted_index.json
   bm25_inverted_index_path: data/processed/bm25_inverted_index.json
-  
+  semantic_inverted_index_path: data/processed/semantic_inverted_index.json
+semantic_search:
+  model_name: all-MiniLM-L6-v2
