@@ -1,5 +1,6 @@
 data:
   dataset_path: data/raw/home_depot_data_1_2021_12.csv
+  test_cases_path: data/test_cases/test_cases_title_only.json
 index:
   keyword_inverted_index_path: data/processed/keyword_inverted_index.json
   bm25_inverted_index_path: data/processed/bm25_inverted_index.json

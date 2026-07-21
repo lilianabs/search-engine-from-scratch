@@ -1,3 +1,4 @@
+from typing import Optional
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.neighbors import NearestNeighbors
@@ -7,7 +8,7 @@ from search_engine.base import BaseSearchEngine, SearchResult
 class SemanticSearchEngine(BaseSearchEngine):
     """Semantic search using embeddings and cosine similarity."""
 
-    def __init__(self, model_name: str | None = None):
+    def __init__(self, model_name: Optional[str] = None):
         """Initialize semantic search engine.
 
         Args:
