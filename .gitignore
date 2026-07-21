@@ -7,6 +7,12 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Claude
+CLAUDE.md
+CLAUDE.local.md
+
+.DS_Store
+
 # Distribution / packaging
 .Python
 build/
