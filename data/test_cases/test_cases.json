@@ -1,0 +1,450 @@
+[
+  {
+    "keyword": "steel toe work boots",
+    "search_type": "keyword",
+    "grading_scale": {
+      "2": "Work boot explicitly with a STEEL toe.",
+      "1": "Work boot with a different toe (composite / soft) - right category, wrong toe material."
+    },
+    "expected_results": [
+      {
+        "title": "Men's Crazy Horse 9'' Logger Boot - Steel Toe - Black Size 10.5(W)",
+        "relevance": 2
+      },
+      {
+        "title": "Men's MobiLite Waterproof Oil-Resistant 8 in. Work Boot - Steel Toe - Brown - Size - 11(M)",
+        "relevance": 2
+      },
+      {
+        "title": "Men's Titanium Waterproof Work Boots - Steel Toe - Brown Size 8.5(W)",
+        "relevance": 2
+      },
+      {
+        "title": "Men's Floorhand Waterproof Wellington Work Boots - Steel Toe - Brown Size 10.5(M)",
+        "relevance": 2
+      },
+      {
+        "title": "Men's Waterproof Logger Boot - Steel Toe - Chocolate Size 10(W)",
+        "relevance": 2
+      },
+      {
+        "title": "Men's Force Slip Resistant Athletic-Nano Waterproof 6 in. Work Boots - Composite Toe - Brown Size 11(W)",
+        "relevance": 1
+      },
+      {
+        "title": "Men's Ground Force Waterproof Wellington Work Boots - Composite Toe - Brown Size 12(M)",
+        "relevance": 1
+      },
+      {
+        "title": "Men's Rugged Flex Waterproof 8'' Work Boots - Composite Toe - Brown Size 11(M)",
+        "relevance": 1
+      },
+      {
+        "title": "Men's McKinney Chelsea Waterproof Boot - Composite Toe - Black Size 13(W)",
+        "relevance": 1
+      },
+      {
+        "title": "Women's 8 in. Work Boots - Soft Toe - Black/Dark Cherry Size 9.5(M)",
+        "relevance": 1
+      },
+      {
+        "title": "Men's Homeland Waterproof 8 inch Lace Up Work Boots - Soft Toe - Brown 10 (W)",
+        "relevance": 1
+      }
+    ],
+    "known_distractors": [
+      {
+        "title": "Men's Size 13 Stonewash Black Oiled Grain Leather 13 in. Harness Motorcycle Boots",
+        "why": "Motorcycle boots - not work boots"
+      },
+      {
+        "title": "Men's Size 13 Brown Barnyard PVC Boot",
+        "why": "PVC barnyard boot - no safety toe"
+      },
+      {
+        "title": "Premium 100 Pack (50 Pairs )Disposable Boot & Shoe Covers, size large fits up to size 11 US Men and 13 US Women",
+        "why": "Disposable boot COVERS - not boots"
+      },
+      {
+        "title": "6 in. W x 10 in. L to 8 in. Diameter 45 Degree Register Vent Boot with Adjustable Hangers",
+        "why": "HVAC 'register vent boot' - 'boot' homonym"
+      },
+      {
+        "title": "Drum Brake Shoe Kit",
+        "why": "Brake 'shoe' kit - footwear homonym"
+      },
+      {
+        "title": "5 gal. #OR-W13 Shoelace Eggshell Enamel Interior Paint & Primer",
+        "why": "Paint color named 'Shoelace'"
+      }
+    ],
+    "notes": "Keyword baseline. Exact phrase 'steel toe' is in the title of all 5 grade-2 items. NOTE: searching 'steel-toe' (hyphen) returns 0 keyword hits - good tokenization test."
+  },
+  {
+    "keyword": "waterproof jacket for cold weather",
+    "search_type": "semantic",
+    "grading_scale": {
+      "2": "Outerwear that is BOTH water-repellent/DWR AND warm for cold weather (verified in the description)."
+    },
+    "expected_results": [
+      {
+        "title": "Men's 3X Large Carbon Heather Cotton/Polyester Rain Defender Paxton Heavyweight Hooded Zip-Front Sweatshirt",
+        "relevance": 2
+      },
+      {
+        "title": "Men's Small Dark Navy Cotton/Nylon FR Full Swing Quick Duck Coat",
+        "relevance": 2
+      },
+      {
+        "title": "Women's X-Large Black 7.2-Volt Lithium-Ion Heated Down Vest with 90% Down Insulation and (1) 5.2 Ah Battery Pack",
+        "relevance": 2
+      },
+      {
+        "title": "Men's Small Dark Navy Modacrylic/Lyocell/Aramid Fleece FR HW Zip Front Sweatshirt",
+        "relevance": 2
+      }
+    ],
+    "known_distractors": [
+      {
+        "title": "C11P Unisex MD Black Long Sleeve Chef Coat with Mesh Back",
+        "why": "Chef COAT - garment, but not outerwear"
+      },
+      {
+        "title": "0.95 oz. 120 in. x 120 in. Rectangle Warm Worth Frost Blanket Shrub Jacket Plant Cover for Frost Protection",
+        "why": "Frost blanket 'shrub JACKET' - a plant cover"
+      },
+      {
+        "title": "Cover for Lawn-Boy Walk-Behind Mowers",
+        "why": "Waterproof mower cover"
+      }
+    ],
+    "notes": "Semantic-favoring. NOT ONE of the 4 relevant products contains the token 'waterproof' or 'jacket' in its title - the dataset says 'Rain Defender', 'water-repellent', 'DWR', 'Duck Coat', 'Sweatshirt', 'Vest'. Pure BM25 should fail badly here. Only 4 relevant items exist in the whole catalog, so this is a high-precision, low-recall query."
+  },
+  {
+    "keyword": "blue paint for bedroom walls",
+    "search_type": "hybrid",
+    "grading_scale": {
+      "2": "Blue INTERIOR paint in a bedroom-appropriate finish (flat / matte / eggshell / satin), full size.",
+      "1": "Blue interior paint, but semi-gloss / hi-gloss finish (atypical for bedrooms), or only an 8 oz color SAMPLE."
+    },
+    "expected_results": [
+      {
+        "title": "1 qt. #BL-W3 Blue Bird Day Matte Interior Paint & Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. #560F-4 Russian Blue Eggshell Enamel Interior Stain -Blocking Paint & Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 qt. #S430-7 Blue Fir One-Coat Hide Matte Interior Stain-Blocking Paint and Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. #ICC-99 Alluring Blue Eggshell Interior Paint",
+        "relevance": 2
+      },
+      {
+        "title": "5 gal. #S510-3 Ombre Blue Eggshell Interior Paint",
+        "relevance": 2
+      },
+      {
+        "title": "5 gal. #HDPV19 Blue Stemware Flat Interior Paint and Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. #580E-3 Sweet Blue Eggshell Enamel Interior Stain-Blocking Paint & Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. #S450-5 Oarsman Blue Flat Low Odor Interior Paint & Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. PPG1159-7 Singing The Blues Satin Interior Latex Paint",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. #HDGB46D Hidden Harbor Blue Eggshell Interior Paint",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. #PPG1159-3 Heavenly Blue Matte Interior Paint and Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. #HDGV20 New World Blue Eggshell Interior Paint",
+        "relevance": 2
+      },
+      {
+        "title": "1 qt. #T14-5 Sky Blue Satin Enamel Low Odor Interior Paint & Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. #P510-6 Brilliant Blue Extra Durable Satin Enamel Interior Paint & Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 qt. #MQ5-57 Traditional Blue Extra Durable Satin Enamel Interior Paint & Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 gal. PPG1145-4 Blue Willow Eggshell Paint with Primer",
+        "relevance": 2
+      },
+      {
+        "title": "1 qt. #580B-5 Cornflower Blue Semi-Gloss Enamel Interior Paint & Primer",
+        "relevance": 1
+      },
+      {
+        "title": "Speedhide Pro EV Zero 1 gal. PPG1236-7 Mediterranean Blue Semi-Gloss Interior Paint",
+        "relevance": 1
+      },
+      {
+        "title": "8 oz. #HDC-AC-23 Provence Blue One-Coat Hide Eggshell Enamel Stain-Blocking Interior Paint & Primer Sample",
+        "relevance": 1
+      },
+      {
+        "title": "8 oz. #M530-3 Perennial Blue Satin Enamel Interior/Exterior Paint & Primer Color Sample",
+        "relevance": 1
+      },
+      {
+        "title": "5 gal. #S460-1 Air Blue Hi-Gloss Enamel Interior/Exterior Paint",
+        "relevance": 1
+      }
+    ],
+    "known_distractors": [
+      {
+        "title": "1 gal. PPG1166-3 Blue Opal Semi-Gloss Exterior Latex Paint",
+        "why": "Blue Opal - EXTERIOR paint"
+      },
+      {
+        "title": "5 gal. Home Decorators Collection #HDC-SM16-07 Croquet Blue Flat Exterior Paint & Primer",
+        "why": "Croquet Blue - EXTERIOR paint"
+      },
+      {
+        "title": "1 gal. #520C-3 Rapture Blue Satin Enamel Exterior Paint & Primer",
+        "why": "Rapture Blue - EXTERIOR paint"
+      },
+      {
+        "title": "5 gal. #HDGB52 Village Blue Flat Exterior Paint",
+        "why": "Village Blue - EXTERIOR paint"
+      },
+      {
+        "title": "Americana 2 oz. Victorian Blue Acrylic Paint",
+        "why": "Victorian Blue 2 oz ACRYLIC CRAFT paint - not wall paint"
+      },
+      {
+        "title": "Vintage Hamadan Blue/Black 5 ft. x 8 ft. Floral Medallion Area Rug",
+        "why": "Blue area rug (one of ~45 blue rugs/furniture items)"
+      }
+    ],
+    "notes": "Multi-attribute. The catalog has 120 titles containing 'blue' but only 21 are blue INTERIOR paint. Keyword on 'blue'+'paint' pulls in ~15 EXTERIOR paints as false positives; semantic must use 'bedroom walls' to infer interior. NOTE: 307763774 'Blue Willow' does not say 'Interior' in the title - only in the description - so it tests whether you index the description too."
+  },
+  {
+    "keyword": "bathroom vanity mirror",
+    "search_type": "keyword",
+    "grading_scale": {
+      "2": "A bathroom vanity mirror sold as a mirror (or a vanity unit whose mirror is the headline feature).",
+      "1": "A bath VANITY that ships with a mirror, a mirrored medicine cabinet, or a generic framed wall mirror that would work above a vanity."
+    },
+    "expected_results": [
+      {
+        "title": "33 in. W x 33 in. H (L2) Framed Square Deluxe Glass Bathroom Vanity Mirror in Weathered Wood",
+        "relevance": 2
+      },
+      {
+        "title": "Blonde 32 in. W x 55 in. H Framed Rectangular Bathroom Vanity Mirror in Light Brown",
+        "relevance": 2
+      },
+      {
+        "title": "31.6 in. W x 18.1 in. D x 32.9 in. H Complete Bathroom Vanity Unit in Anthracite with Mirror",
+        "relevance": 2
+      },
+      {
+        "title": "Gela 60 in. W x 22 in. D x 35 in. H Vanity in Grey with Marble Vanity Top in White with Basin and Mirror",
+        "relevance": 1
+      },
+      {
+        "title": "Venice 60 in. W x 18 in. D Bath Vanity in Navy with Marble Vanity Top in White with White Basin and Mirror",
+        "relevance": 1
+      },
+      {
+        "title": "Daria 48 in. W x 22 in. D Single Vanity in Dark Espresso with Cultured Marble Vanity Top in White with Basin and Mirror",
+        "relevance": 1
+      },
+      {
+        "title": "Caroline 72 in. W Bath Vanity in Espresso with Marble Vanity Top in White with Round Basin and Mirror",
+        "relevance": 1
+      },
+      {
+        "title": "Caroline 36 in. W x 22 in. D x 35 in. H Single Sink Bath Vanity in Espresso with Quartz Top and Mirror",
+        "relevance": 1
+      },
+      {
+        "title": "Caroline Avenue 72 in. W x 22 in. D x 35 in. H Double Sink Bath Vanity in Gray with Quartz Top and Mirror",
+        "relevance": 1
+      },
+      {
+        "title": "Miranda 48 in. W Single Bath Vanity in Dark Blue with Solid Surface Vanity Top in White with White Basin and Mirror",
+        "relevance": 1
+      },
+      {
+        "title": "Valencia 22 in. W x 27 in. H Single Framed Wall Mirror in Cream",
+        "relevance": 1
+      },
+      {
+        "title": "Medium Rectangle Satin White Silver Casual Mirror (31.12 in. H x 41.12 in. W)",
+        "relevance": 1
+      },
+      {
+        "title": "Medium Rectangle Urban Pewter Beveled Glass Modern Mirror (32.5 in. H x 42.5 in. W)",
+        "relevance": 1
+      },
+      {
+        "title": "Medium Rectangle Distressed Brown Beveled Glass Casual Mirror (29.38 in. H x 23.38 in. W)",
+        "relevance": 1
+      },
+      {
+        "title": "Large Rectangle Walnut Beveled Glass Casual Mirror (42 in. H x 30 in. W)",
+        "relevance": 1
+      },
+      {
+        "title": "Medium Rectangle Brown Modern Mirror (34 in. H x 40 in. W)",
+        "relevance": 1
+      },
+      {
+        "title": "Medium Rectangle Stone Gray Art Deco Mirror (31.5 in. H x 25.5 in. W)",
+        "relevance": 1
+      },
+      {
+        "title": "48 in. x 24 in. Classic Retro Rectangle Wooden Framed Decorative Mirror",
+        "relevance": 1
+      },
+      {
+        "title": "South Beach Collection 26 in. x 21 in. Rectangular Landscape Single Tilt Mirror with Beveled Edge in Polished Brass",
+        "relevance": 1
+      },
+      {
+        "title": "Large Rectangle Black Hooks Modern Mirror (59 in. H x 20 in. W)",
+        "relevance": 1
+      },
+      {
+        "title": "20 in. x 26 in H. Recessed or Surface Mount Mirrored Medicine Cabinet in Oil Rubbed Bronze",
+        "relevance": 1
+      }
+    ],
+    "known_distractors": [
+      {
+        "title": "1 gal. PPG1039-3 Mirror Flat Interior Paint with Primer",
+        "why": "Paint color literally NAMED 'Mirror' - classic keyword false positive"
+      },
+      {
+        "title": "Stainless Steel SO-239 to SO-239 Antenna Mirror Mount",
+        "why": "Antenna 'mirror mount' for a vehicle"
+      },
+      {
+        "title": "96 in. x 80 in. Polished Edge Backed Mirror Aluminum Frame Interior Closet Sliding Door with Chrome Trim",
+        "why": "Mirrored closet SLIDING DOOR"
+      },
+      {
+        "title": "Neo Solano 24 in. x 36 in. DIY Mirror Frame Kit in Bronze Black - Mirror Not Included",
+        "why": "Mirror FRAME KIT - 'Mirror Not Included'"
+      },
+      {
+        "title": "Oversized Old Iron Plastic Beveled Glass Full-Length Industrial Farmhouse Mirror (65 in. H X 31 in. W)",
+        "why": "65 in. full-length floor-leaner mirror - wrong type for a vanity"
+      }
+    ],
+    "notes": "Balanced sanity check - all three engines should do well. 26 titles contain 'mirror'; 21 are genuinely relevant. The 'Mirror Flat Interior Paint' distractor is the one to watch: keyword will rank it, semantic should demote it."
+  },
+  {
+    "keyword": "something to keep my dog from escaping the yard",
+    "search_type": "semantic",
+    "grading_scale": {
+      "2": "Actually PREVENTS escape - a dig barrier or an enclosure/fence panel system.",
+      "1": "Fence-related but only partially solves it - a fence gate, or a privacy screen that attaches to an EXISTING fence (blocks sight, not escape)."
+    },
+    "expected_results": [
+      {
+        "title": "Dig Defence Large Animal Dig Barrier (25-Pack)",
+        "relevance": 2
+      },
+      {
+        "title": "3 ft. x 48 ft. White Plastic Wire Mesh Fence Panel/Enclosure Kit with Gate Insert- Hard Surface",
+        "relevance": 2
+      },
+      {
+        "title": "Athens 4 ft. W x 4 ft. H Gloss Black Aluminum Pressed Spear Design Fence Gate",
+        "relevance": 1
+      },
+      {
+        "title": "4 ft. H x 25 ft. W Black Fence Outdoor Privacy Screen with Black Edge Bindings and Grommets",
+        "relevance": 1
+      },
+      {
+        "title": "4 ft. x 144 ft. Grey Privacy Fence Screen HDPE Mesh Windscreen with Reinforced Grommets for Garden Fence (Custom Size)",
+        "relevance": 1
+      },
+      {
+        "title": "3 ft. x 72 ft. Beige Privacy Fence Screen HDPE Mesh Screen with Reinforced Grommets for Garden Fence (Custom Size)",
+        "relevance": 1
+      },
+      {
+        "title": "4 ft. x 77 ft. Green Privacy Fence Screen HDPE Mesh Windscreen with Reinforced Grommets for Garden Fence (Custom Size)",
+        "relevance": 1
+      },
+      {
+        "title": "8 ft. x 104 ft. Green Privacy Fence Screen HDPE Mesh Netting with Reinforced Grommets for Garden Fence (Custom Size)",
+        "relevance": 1
+      },
+      {
+        "title": "5 ft. x 161 ft. Brown Privacy Fence Screen Mesh Cover Screen with Reinforced Grommets for Garden Fence (Custom Size)",
+        "relevance": 1
+      },
+      {
+        "title": "8 ft. x 46 ft. White Privacy Fence Screen Mesh Cover Screen with Reinforced Grommets for Garden Fence (Custom Size)",
+        "relevance": 1
+      },
+      {
+        "title": "4 ft. x 25 ft. Green Privacy Fence Screen Mesh Fabric Cover Windscreen with Reinforced Grommets for Garden Fence",
+        "relevance": 1
+      },
+      {
+        "title": "8 ft. x 36 ft. Brown Privacy Fence Screen HDPE Mesh Windscreen with Reinforced Grommets for Garden Fence (Custom Size)",
+        "relevance": 1
+      }
+    ],
+    "known_distractors": [
+      {
+        "title": "7 in. x 11.25 in. Medium Deluxe Aluminum Frame Dog and Pet Door",
+        "why": "Dog and Pet DOOR - ANTI-relevant: it helps the dog get OUT"
+      },
+      {
+        "title": "Casey Small Rectangle Indoor/Outdoor Greystone Dog Bed",
+        "why": "Indoor/outdoor DOG BED"
+      },
+      {
+        "title": "18 in. x 27 in. Indoor/Outdoor Yorkie Yorkshire Terrier Spoiled Dog Lives Here Door Mat",
+        "why": "Dog door MAT"
+      },
+      {
+        "title": "13 in. x 18.5 in. Life is Better Lab Dog Garden Flag Double-Sided Readable Both Sides Animals Decorative",
+        "why": "Dog garden FLAG"
+      },
+      {
+        "title": "1 gal. #N420-2 Mountain Falls Solid Color House and Fence Exterior Wood Stain",
+        "why": "'House and Fence' exterior wood STAIN - paint, not a fence"
+      },
+      {
+        "title": "6 ft. x 50 ft. Needle-Punched Compound Weed Barrier Fabric for Raised Bed",
+        "why": "Weed BARRIER fabric"
+      },
+      {
+        "title": "1 gal. #M200-7 Rusty Gate Semi-Gloss Direct to Metal Interior/Exterior Paint",
+        "why": "Paint color named 'Rusty Gate'"
+      }
+    ],
+    "notes": "Natural language, ZERO keyword overlap with the relevant titles ('dog'/'escaping'/'yard' appear in none of them). Hardest query. NOTE: the two grade-2 items only reveal themselves in the DESCRIPTION ('Dig Defence...extends the protection of any fence'; 'Secure your home gardens, PETS, chickens'). If you only embed the title, semantic will also miss them - which is exactly why you concatenate title + description."
+  }
+]
