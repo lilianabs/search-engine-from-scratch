@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Type
 from search_engine.keyword_search import KeywordSearchEngine
 from search_engine.bm25_search import BM25SearchEngine
+from search_engine.semantic_search import SemanticSearchEngine
 from search_engine.base import BaseSearchEngine
 from utils import read_documents, get_config_path, load_config, get_price_availability
 
@@ -22,7 +23,11 @@ def init_search_engine(
     engine_name: str
 ) -> BaseSearchEngine:
     """Initialize and persist a search engine."""
-    engine = engine_class()
+    if engine_name == "semantic":
+        model_name = config_dict.get("semantic_search", {}).get("model_name")
+        engine = SemanticSearchEngine(model_name=model_name)
+    else:
+        engine = engine_class()
     engine.add_documents(documents)
     index_path = config_dict["index"][f"{engine_name}_inverted_index_path"]
     engine.save(index_path)
@@ -71,8 +76,7 @@ def main():
     engines_config = [
         ("keyword", KeywordSearchEngine),
         ("bm25", BM25SearchEngine),
-        # ("semantic", SemanticSearchEngine),
-        # ("hybrid", HybridSearchEngine),
+        ("semantic", SemanticSearchEngine),
     ]
 
     engines = {}

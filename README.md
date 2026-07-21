@@ -32,7 +32,117 @@ To install the project, follow these steps:
    ```
 
 ### Running the search engine
-Add instructions to run the search engine
+
+To run the comparison of all search engines:
+
+```bash
+uv run python scripts/compare_search_engines.py
+```
+
+To evaluate search engines against test cases:
+
+```bash
+uv run python scripts/evaluate_with_test_cases.py
+```
+
+## Search Engine Evaluation Results
+
+### Overall Performance Summary
+
+The semantic search engine outperforms keyword-based approaches, especially on semantic queries:
+
+| Engine | Precision | Recall | nDCG |
+|--------|-----------|--------|------|
+| **Semantic** | **64.0%** | **58.6%** | **0.712** |
+| Keyword | 44.0% | 28.3% | 0.425 |
+| BM25 | 42.0% | 27.7% | 0.412 |
+
+### Query-by-Query Performance
+
+#### 1. "steel toe work boots" (Keyword Query)
+- **Best Engine**: Keyword Search
+- Semantic: 100% Precision, 90.91% Recall, 0.9434 nDCG
+- All engines perform well on explicit keyword matches
+
+#### 2. "waterproof jacket for cold weather" (Semantic Query) ⭐
+- **Best Engine**: Semantic Search
+- Semantic: 40% Precision, **100% Recall**, 0.9758 nDCG
+- Keyword/BM25: 0% (unable to understand semantic intent)
+- **Finding**: Semantic search excels at understanding natural language intent that keyword engines miss
+
+#### 3. "blue paint for bedroom walls" (Hybrid Query)
+- Limited by title-only indexing (waterproof claims exist only in descriptions)
+- All engines: ~30% Precision, ~9.4% Recall
+
+#### 4. "bathroom vanity mirror" (Keyword Query)
+- **Best Engine**: Semantic Search
+- Semantic: **90% Precision**, 42.86% Recall, 0.9261 nDCG
+- Semantic engine provides highest precision and nDCG
+
+#### 5. "something to keep my dog from escaping the yard" (Semantic Query) ⭐
+- **Best Engine**: Semantic Search
+- Semantic: **60% Precision**, **50% Recall**, 0.5150 nDCG
+- Keyword/BM25: 0% (fail to understand containment concept)
+
+### Key Findings
+
+1. **Semantic Search Strengths**:
+   - Excels at understanding semantic intent and natural language queries
+   - Captures meaning beyond exact keyword matching
+   - Better at synonyms and conceptual relationships
+
+2. **Keyword/BM25 Strengths**:
+   - Better for explicit keyword queries
+   - Lower computational overhead
+   - Predictable behavior for exact matches
+
+3. **Recommendation**:
+   - Use semantic search for natural language queries
+   - Consider hybrid approach combining both methods
+   - Semantic search provides ~50% better overall performance
+
+## Evaluation Metrics
+
+### Precision
+Measures the fraction of retrieved documents that are relevant:
+
+```
+Precision = (# of relevant retrieved docs) / (# of retrieved docs)
+```
+
+**Example**: If you retrieve 10 documents and 4 are relevant, precision = 40%
+
+### Recall
+Measures the fraction of relevant documents that were successfully retrieved:
+
+```
+Recall = (# of relevant retrieved docs) / (# of total relevant docs)
+```
+
+**Example**: If there are 20 relevant documents total and you retrieve 8 of them, recall = 40%
+
+### nDCG (Normalized Discounted Cumulative Gain)
+Measures ranking quality by considering both relevance and position. Documents ranked higher contribute more to the score.
+
+```
+DCG = Σ(relevance_i / log₂(position_i + 1))
+nDCG = DCG / IDCG (Ideal DCG with perfect ranking)
+```
+
+**How it works**:
+- Relevance scores: Grade 2 = highly relevant, Grade 1 = somewhat relevant, Grade 0 = not relevant
+- Position matters: A relevant document at position 1 is worth much more than at position 10
+- Normalized: nDCG ranges from 0 to 1, where 1 = perfect ranking
+
+**Example**:
+- Retrieved order: [Grade 2, Grade 0, Grade 1, Grade 2, ...]
+- Position 1 (Grade 2): 2 / log₂(2) = 2.0
+- Position 2 (Grade 0): 0 / log₂(3) = 0
+- Position 3 (Grade 1): 1 / log₂(4) = 0.5
+- Position 4 (Grade 2): 2 / log₂(5) = 0.86
+- DCG = 2.0 + 0 + 0.5 + 0.86 = 3.36
+
+**Why nDCG is important**: It rewards good ranking order while penalizing relevant documents that appear late in results.
 
 
 ### Using the venv in VS CODE
