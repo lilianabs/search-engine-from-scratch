@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from search_engine.semantic_search import SemanticSearchEngine
 from search_engine.keyword_search import KeywordSearchEngine
 from search_engine.bm25_search import BM25SearchEngine
+from search_engine.hybrid_search import HybridSearchEngine
 from utils import read_documents, get_config_path, load_config
 
 
@@ -126,6 +127,10 @@ def main():
 
     for engine_name, engine in engines.items():
         engine.add_documents(documents)
+
+    # Create hybrid engine
+    hybrid_engine = HybridSearchEngine(engines["bm25"], engines["semantic"], keyword_weight=0.5, semantic_weight=0.5)
+    engines["hybrid"] = hybrid_engine
 
     # Evaluate each test case
     all_results = []

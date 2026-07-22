@@ -3,6 +3,7 @@ from typing import Type
 from search_engine.keyword_search import KeywordSearchEngine
 from search_engine.bm25_search import BM25SearchEngine
 from search_engine.semantic_search import SemanticSearchEngine
+from search_engine.hybrid_search import HybridSearchEngine
 from search_engine.base import BaseSearchEngine
 from utils import read_documents, get_config_path, load_config, get_price_availability
 
@@ -82,6 +83,10 @@ def main():
     engines = {}
     for engine_name, engine_class in engines_config:
         engines[engine_name] = init_search_engine(engine_class, documents, config_dict, engine_name)
+
+    keyword_engine = engines["bm25"]
+    semantic_engine = engines["semantic"]
+    engines["hybrid"] = HybridSearchEngine(keyword_engine, semantic_engine, keyword_weight=0.5, semantic_weight=0.5)
 
     query = "steel toe work boots"
     metrics = []
