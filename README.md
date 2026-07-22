@@ -1,6 +1,6 @@
-# search-engine-from-scratch
+# Search engine from scratch
 
-This project contains the implementation of the following search engines in Python:
+This project contains the implementation of the following search engines from scratch in Python:
 
 - Keyword
 - BM25
