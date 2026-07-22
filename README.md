@@ -1,49 +1,13 @@
 # search-engine-from-scratch
-Search engine implementation from scratch using Python
+This project contains the implementation of the following search engines in Python:
 
+- Keyword
+- BM25
+- Semantic
+- Hybrid
 
-## Running the project
-Before installing the project locally, make sure you have **Python 3.13+** and [uv](https://docs.astral.sh/uv/getting-started/installation/) installed.
-
-To install the project, follow these steps:
-
-1. Create a new virtual environment:
-
-   ```
-   uv venv venv --python 3.13
-   ```
-
-1. Activate the Python environment:
-
-   ```
-   source venv/bin/activate
-   ```
-
-1. Install the project dependencies:
-
-   ```
-   uv sync
-   ```
-
-1. Install the project locally:
-
-   ```
-   uv pip install -e .
-   ```
-
-### Running the search engine
-
-To run the comparison of all search engines:
-
-```bash
-uv run python scripts/compare_search_engines.py
-```
-
-To evaluate search engines against test cases:
-
-```bash
-uv run python scripts/evaluate_with_test_cases.py
-```
+## Data
+This project uses the [Home Depot dataset](https://www.kaggle.com/datasets/thedevastator/the-home-depot-products-dataset) from Kaggle, which contains 2,551 product records from Home Depot. Each product includes metadata such as title, description, brand, price, SKU, and availability. This dataset serves as the foundation for developing and testing keyword, semantic, and hybrid search capabilities across ecommerce product catalogs.
 
 ## Search Engine Evaluation Results
 
@@ -155,3 +119,46 @@ If you are modifying the project using VS CODE then create the file `.vscode/set
   "python.terminal.activateEnvironment": true
   }
    ```
+
+## Running the project
+Before installing the project locally, make sure you have **Python 3.13+** and [uv](https://docs.astral.sh/uv/getting-started/installation/) installed.
+
+To install the project, follow these steps:
+
+1. Create a new virtual environment:
+
+   ```
+   uv venv venv --python 3.13
+   ```
+
+1. Activate the Python environment:
+
+   ```
+   source venv/bin/activate
+   ```
+
+1. Install the project dependencies:
+
+   ```
+   uv sync
+   ```
+
+1. Install the project locally:
+
+   ```
+   uv pip install -e .
+   ```
+
+### Running the search engine
+
+To run the comparison of all search engines:
+
+```bash
+uv run python scripts/compare_search_engines.py
+```
+
+To evaluate search engines against test cases:
+
+```bash
+uv run python scripts/evaluate_with_test_cases.py
+```
