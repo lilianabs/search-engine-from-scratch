@@ -1,10 +1,33 @@
 # search-engine-from-scratch
+
 This project contains the implementation of the following search engines in Python:
 
 - Keyword
 - BM25
 - Semantic
 - Hybrid
+
+## Table of Contents
+
+- [search-engine-from-scratch](#search-engine-from-scratch)
+  - [Table of Contents](#table-of-contents)
+  - [Data](#data)
+  - [Search Engine Evaluation Results](#search-engine-evaluation-results)
+    - [Overall Performance Summary](#overall-performance-summary)
+    - [Query-by-Query Performance](#query-by-query-performance)
+      - [1. "steel toe work boots" (Keyword Query)](#1-steel-toe-work-boots-keyword-query)
+      - [2. "waterproof jacket for cold weather" (Semantic Query) ⭐](#2-waterproof-jacket-for-cold-weather-semantic-query-)
+      - [3. "blue paint for bedroom walls" (Hybrid Query)](#3-blue-paint-for-bedroom-walls-hybrid-query)
+      - [4. "bathroom vanity mirror" (Keyword Query)](#4-bathroom-vanity-mirror-keyword-query)
+      - [5. "something to keep my dog from escaping the yard" (Semantic Query) ⭐](#5-something-to-keep-my-dog-from-escaping-the-yard-semantic-query-)
+    - [Key Findings](#key-findings)
+  - [Evaluation Metrics](#evaluation-metrics)
+    - [Precision](#precision)
+    - [Recall](#recall)
+    - [nDCG (Normalized Discounted Cumulative Gain)](#ndcg-normalized-discounted-cumulative-gain)
+  - [Running the project](#running-the-project)
+    - [Using the venv in VS CODE](#using-the-venv-in-vs-code)
+    - [Running the search engine](#running-the-search-engine)
 
 ## Data
 To test the search engines we use the [Home Depot dataset](https://www.kaggle.com/datasets/thedevastator/the-home-depot-products-dataset) from Kaggle, which contains 2,551 product records from Home Depot. Each product includes metadata such as title, description, brand, price, SKU, and availability. This dataset serves as the foundation for developing and testing keyword, semantic, and hybrid search capabilities across ecommerce product catalogs.
@@ -109,17 +132,6 @@ nDCG = DCG / IDCG (Ideal DCG with perfect ranking)
 **Why nDCG is important**: It rewards good ranking order while penalizing relevant documents that appear late in results.
 
 
-### Using the venv in VS CODE
-
-If you are modifying the project using VS CODE then create the file `.vscode/settings.json` with the following lines:
-
-   ```
-  {
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-  "python.terminal.activateEnvironment": true
-  }
-   ```
-
 ## Running the project
 Before installing the project locally, make sure you have **Python 3.13+** and [uv](https://docs.astral.sh/uv/getting-started/installation/) installed.
 
@@ -147,6 +159,17 @@ To install the project, follow these steps:
 
    ```
    uv pip install -e .
+   ```
+
+### Using the venv in VS CODE
+
+If you are modifying the project using VS CODE then create the file `.vscode/settings.json` with the following lines:
+
+   ```
+  {
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true
+  }
    ```
 
 ### Running the search engine
