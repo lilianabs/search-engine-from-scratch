@@ -30,7 +30,9 @@ This project contains the implementation of the following search engines from sc
     - [Running the search engine](#running-the-search-engine)
 
 ## Data
-To test the search engines we use the [Home Depot dataset](https://www.kaggle.com/datasets/thedevastator/the-home-depot-products-dataset) from Kaggle, which contains 2,551 product records from Home Depot. Each product includes metadata such as title, description, brand, price, SKU, and availability. This dataset serves as the foundation for developing and testing keyword, semantic, and hybrid search capabilities across ecommerce product catalogs.
+To test the search engines, we use the [Home Depot dataset](https://www.kaggle.com/datasets/thedevastator/the-home-depot-products-dataset) from Kaggle, which contains 2,551 product records from Home Depot. Each product includes metadata such as title, description, brand, price, SKU, and availability. This dataset serves as the foundation for developing and testing keyword, semantic, and hybrid search capabilities across ecommerce product catalogs.
+
+**Note:** The query examples were generated with Claude Code.
 
 ## Search Engine Evaluation Results
 
